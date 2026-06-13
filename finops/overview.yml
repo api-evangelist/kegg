@@ -1,0 +1,72 @@
+name: KEGG APIs Financial Overview
+description: >
+  The KEGG REST API is free for academic users with no registration required.
+  Costs arise only when academic researchers need bulk FTP data downloads
+  (annual subscription ~$2,000–$5,000 USD) or when commercial entities require
+  a license through Pathway Solutions (pricing by inquiry). There are no
+  per-call charges, no data egress fees from the REST API, and no tiered
+  usage-based pricing. The primary financial consideration for high-volume
+  users is the operational cost of their own infrastructure for processing
+  retrieved data, and the subscription fees for FTP access if REST API rate
+  limits are insufficient for their workflow.
+provider: Kyoto Encyclopedia of Genes and Genomes (KEGG)
+url: https://www.kegg.jp/kegg/rest/
+
+funding:
+  model: >
+    KEGG is operated by the Kanehisa Laboratory at Kyoto University and the
+    Human Genome Center at the University of Tokyo, with commercial licensing
+    managed by Pathway Solutions (Japan). Historically funded by academic
+    grants; a subscription model was introduced to sustain operations as grant
+    funding declined.
+  cost: Free for academic REST API access; subscription or license required for FTP and commercial use
+
+apis:
+
+  - name: KEGG REST API
+    cost: Free (academic use only)
+    apiKey: Not required
+    notes: >
+      All seven operations (info, list, find, get, conv, link, ddi) are free
+      for academic users. No registration, API key, or credit card is needed.
+      Rate limit of 3 req/s is enforced. Commercial use without a license is
+      prohibited.
+
+  - name: KEGG FTP Academic Subscription — End User
+    cost: ~$2,000 USD per year
+    apiKey: Not applicable (FTP credential provided on subscription)
+    notes: >
+      Annual subscription for a laboratory or department needing weekly-updated
+      bulk FTP data. Pricing approximate; confirm via pathway.jp request form.
+
+  - name: KEGG FTP Academic Subscription — Service Provider
+    cost: ~$5,000 USD per year
+    apiKey: Not applicable (FTP credential provided on subscription)
+    notes: >
+      Annual subscription for research groups deploying KEGG-based tools or
+      web services. Includes academic service provider license. Pricing
+      approximate; confirm via pathway.jp request form.
+
+  - name: Commercial License
+    cost: Pricing on request
+    apiKey: Not applicable
+    notes: >
+      Commercial End User and Service Provider licenses available through
+      Pathway Solutions (pathway.jp/en/licensing.html). Terms are
+      non-negotiable. Includes optional KEGG mirror site and API access.
+
+cost_drivers:
+  - factor: REST API calls
+    impact: None — REST API is free and has no per-call charge
+  - factor: FTP bulk data subscription
+    impact: High — required for bulk downloads or local KEGG mirror; $2k–$5k/year academic
+  - factor: Commercial licensing
+    impact: High — required for any non-academic production use; pricing by inquiry
+  - factor: Own infrastructure
+    impact: Variable — compute and storage costs for processing KEGG data are borne by the user
+
+optimization:
+  - Use the CONV and LINK operations to minimize round-trips when mapping identifiers
+  - Batch up to 10 entries per GET call to maximize throughput within the 3 req/s limit
+  - For academic bulk-data needs, evaluate the FTP subscription vs. repeated REST polling
+  - Cache pathway images and flat-file entries locally to avoid redundant API calls

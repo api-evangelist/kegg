@@ -1,0 +1,78 @@
+name: Kyoto Encyclopedia of Genes and Genomes (KEGG)
+description: >
+  The Kyoto Encyclopedia of Genes and Genomes (KEGG) is an integrated database
+  resource for understanding high-level functions and utilities of biological
+  systems from molecular-level information derived from genome sequencing and
+  other high-throughput experiments. The KEGG REST API at rest.kegg.jp provides
+  programmatic access to KEGG databases covering biological pathways, metabolic
+  networks, molecular interactions, drug targets, disease associations, chemical
+  compounds, genomic sequences, and functional orthologs across thousands of
+  organisms. The API exposes seven core operations — info, list, find, get,
+  conv, link, and ddi — enabling identifier conversion, cross-database linking,
+  keyword and structure searches, and full entry retrieval in text, KGML, and
+  JSON formats. Academic use is free via the REST API; FTP and commercial access
+  require subscriptions managed through NPO Bioinformatics Japan and Pathway
+  Solutions.
+url: https://www.kegg.jp/kegg/rest/
+image: https://www.kegg.jp/favicon.ico
+tags:
+  - Bioinformatics
+  - Genomics
+  - Life Sciences
+  - Pathways
+  - Metabolomics
+  - Drug Targets
+  - Disease
+  - Chemical Compounds
+  - Enzymes
+  - Orthology
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+apis:
+
+  - name: KEGG REST API
+    description: >
+      The KEGG REST API provides unified programmatic access to all KEGG
+      databases through seven operations: INFO (database statistics and release
+      notes), LIST (entry identifiers and names), FIND (keyword and molecular
+      weight/formula search), GET (full entry retrieval in flat-file, KGML,
+      JSON, image, or sequence formats), CONV (identifier conversion between
+      KEGG and external databases such as NCBI, UniProt, PubChem, and ChEBI),
+      LINK (cross-reference lookup between KEGG databases), and DDI (adverse
+      drug-drug interaction queries). Databases covered include PATHWAY, BRITE,
+      MODULE, KO, GENES, GENOME, COMPOUND, GLYCAN, REACTION, ENZYME, DISEASE,
+      DRUG, NETWORK, VARIANT, and DGROUP. The API is restricted to academic
+      users; commercial use requires a license from Pathway Solutions. Rate
+      limit is 3 requests per second per client.
+    image: https://www.kegg.jp/favicon.ico
+    humanURL: https://www.kegg.jp/kegg/rest/
+    baseURL: https://rest.kegg.jp
+    tags:
+      - Pathways
+      - Metabolic Networks
+      - Genomics
+      - Drug Targets
+      - Disease
+      - Chemical Compounds
+      - Enzymes
+      - Identifier Conversion
+      - Orthology
+    properties:
+      - type: documentation
+        url: https://www.kegg.jp/kegg/rest/keggapi.html
+      - type: terms-of-service
+        url: https://www.kegg.jp/kegg/legal.html
+      - type: rate-limits
+        url: https://api-evangelist.github.io/kegg/rate-limits/kegg-rest-api.yml
+      - type: plans
+        url: https://api-evangelist.github.io/kegg/plans/kegg-rest-api.yml
+      - type: finops
+        url: https://api-evangelist.github.io/kegg/finops/overview.yml
+    contact:
+      - FN: KEGG Support
+        url: https://www.kegg.jp/kegg/feedback.html
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

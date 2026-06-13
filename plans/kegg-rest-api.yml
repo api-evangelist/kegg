@@ -1,0 +1,100 @@
+name: KEGG REST API Plans
+description: >
+  The KEGG REST API at rest.kegg.jp is available free of charge for academic
+  users. Commercial access to the KEGG API requires a separate subscription or
+  license through Pathway Solutions. FTP data access (for bulk downloads and
+  local KEGG mirrors) requires a paid academic or commercial subscription. The
+  free academic REST API tier supports all seven operations and all KEGG
+  databases; the only restriction is a 3 requests-per-second rate limit and a
+  maximum of 10 entries per GET or CONV request.
+provider: Kyoto Encyclopedia of Genes and Genomes (KEGG)
+url: https://www.kegg.jp/kegg/rest/
+
+plans:
+
+  - name: Academic REST API (Free)
+    description: >
+      Free access to the KEGG REST API for academic researchers and
+      non-commercial users. Covers all seven API operations (info, list, find,
+      get, conv, link, ddi) across all KEGG databases. No API key or
+      registration is required; use of an institutional or personal email is
+      recommended for support inquiries. Access may be blocked if rate limits
+      are exceeded.
+    free: true
+    rateLimit:
+      requests: 3
+      period: second
+    features:
+      - INFO operation — database release statistics
+      - LIST operation — entry identifiers and names for all databases
+      - FIND operation — keyword, formula, molecular weight, and sequence search
+      - GET operation — flat-file, KGML, JSON, image, aaseq, ntseq, mol, kcf formats
+      - CONV operation — identifier conversion (KEGG ↔ NCBI, UniProt, PubChem, ChEBI, ATC)
+      - LINK operation — cross-database relational lookup
+      - DDI operation — drug-drug interaction adverse event queries
+      - Access to pathway, brite, module, ko, genes, genome, compound, glycan, reaction, enzyme, disease, drug, network, variant, dgroup databases
+      - HTTP 200 / 400 / 404 status code responses
+    restrictions:
+      - For academic use only; commercial use is prohibited without a license
+      - Maximum 10 entries per GET or CONV call
+      - HTTPS required (HTTP access deprecated since June 2022)
+
+  - name: KEGG FTP Academic Subscription — End User
+    description: >
+      Paid annual subscription providing weekly-updated FTP access to the full
+      KEGG dataset for an individual laboratory or department. Does not permit
+      setting up a public-facing local KEGG copy or distributing data to third
+      parties. Managed by NPO Bioinformatics Japan and Pathway Solutions.
+    free: false
+    price:
+      currency: USD
+      amount: 2000
+      period: year
+      notes: >
+        Approximate cost cited in public sources as of 2024–2026. Confirm
+        current pricing via the request form at pathway.jp/en/request.html.
+    features:
+      - Weekly-updated FTP data download (pathway, brite, module, ko, genes, ligand, KGML)
+      - FASTA sequence files
+      - Academic service provider license eligibility
+
+  - name: KEGG FTP Academic Subscription — Service Provider
+    description: >
+      Academic service provider subscription for research groups developing
+      and distributing software tools, web services, or databases that
+      incorporate KEGG data. Permits deployment of local KEGG-based services
+      for users within the institution. Managed jointly by NPO Bioinformatics
+      Japan and Pathway Solutions.
+    free: false
+    price:
+      currency: USD
+      amount: 5000
+      period: year
+      notes: >
+        Approximate organizational cost cited in public sources as of
+        2024–2026. Confirm current pricing via the request form at
+        pathway.jp/en/request.html.
+    features:
+      - All End User FTP subscription features
+      - Right to provide KEGG-based services to affiliated users
+      - KEGG mirror site access including API for authorized service delivery
+
+  - name: Commercial License (Pathway Solutions)
+    description: >
+      Commercial licensing for non-academic entities requiring internal or
+      external use of KEGG data and APIs. Available as End User (internal R&D
+      use) or Service Provider (external service delivery). Pricing is
+      determined by inquiry through Pathway Solutions; terms are non-negotiable.
+    free: false
+    price:
+      currency: USD
+      amount: null
+      notes: >
+        Pricing available on request through pathway.jp/en/licensing.html.
+        Tiers include standard, group (with affiliates), and enterprise
+        (unlimited affiliates).
+    features:
+      - Download and internal use of KEGG FTP data for business purposes
+      - Optional KEGG mirror site access (including KEGG API) for R&D
+      - Service Provider option for deploying KEGG-based products to customers
+    registration: https://www.pathway.jp/en/licensing.html

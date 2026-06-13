@@ -1,0 +1,60 @@
+name: KEGG REST API Rate Limits
+description: >
+  The KEGG REST API enforces a maximum of 3 API calls per second per client.
+  Exceeding this limit results in the client's access being blocked. There is
+  no API key mechanism; all academic users share the same unauthenticated
+  access tier. A separate per-call input limit restricts GET and CONV
+  operations to 10 entries per request. The API is available only over HTTPS;
+  HTTP access was retired in June 2022.
+provider: Kyoto Encyclopedia of Genes and Genomes (KEGG)
+url: https://www.kegg.jp/kegg/rest/keggapi.html
+
+tiers:
+
+  - name: Academic REST API (No API Key)
+    requests:
+      limit: 3
+      period: second
+      scope: client
+    notes: >
+      No API key mechanism exists. Rate limiting is enforced by client IP
+      address. Exceeding 3 requests per second will result in IP-level
+      access being blocked. Recovery requires contacting KEGG support.
+
+input:
+  - operation: GET
+    maxEntries: 10
+    notes: >
+      Each GET request may specify up to 10 KEGG entry identifiers separated
+      by plus signs (e.g., /get/C00031+C00033). Exceeding 10 entries in a
+      single call returns an HTTP 400 Bad Request error.
+  - operation: CONV
+    maxEntries: 10
+    notes: >
+      CONV requests for external-to-KEGG or KEGG-to-external identifier
+      conversion accept at most 10 identifiers per call.
+
+protocols:
+  - required: HTTPS
+    deprecated: HTTP (retired June 2022)
+    baseURL: https://rest.kegg.jp
+
+enforcement:
+  - Requests exceeding the rate limit result in IP-level access being blocked
+  - Blocked access requires contacting KEGG to be restored
+  - Exceeding the 10-entry input limit returns HTTP 400 Bad Request
+
+status:
+  codes:
+    - code: 200
+      meaning: Success
+    - code: 400
+      meaning: Bad request — syntax error, invalid database name, or input limit exceeded
+    - code: 404
+      meaning: Entry not found
+
+recommendations:
+  - Implement a minimum 350 ms delay between consecutive API calls
+  - Use the LIST or FIND operations first to collect identifiers, then batch GET up to 10 at a time
+  - Avoid automated polling loops without back-off logic
+  - For bulk data needs, consider the KEGG FTP Academic Subscription instead of repeated REST calls
