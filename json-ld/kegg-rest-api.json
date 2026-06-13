@@ -1,0 +1,117 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "schema": "https://schema.org/",
+    "hydra": "http://www.w3.org/ns/hydra/core#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://rest.kegg.jp",
+  "name": "KEGG REST API",
+  "description": "The KEGG REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. Seven core operations are exposed: info, list, find, get, conv, link, and ddi.",
+  "url": "https://www.kegg.jp/kegg/rest/",
+  "documentation": "https://www.kegg.jp/kegg/rest/keggapi.html",
+  "termsOfService": "https://www.kegg.jp/kegg/legal.html",
+  "provider": {
+    "@type": "Organization",
+    "name": "Kanehisa Laboratories",
+    "url": "https://www.kegg.jp",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "url": "https://www.kegg.jp/kegg/feedback.html",
+      "contactType": "technical support"
+    }
+  },
+  "version": "1.0.0",
+  "inLanguage": "en",
+  "keywords": [
+    "bioinformatics",
+    "genomics",
+    "pathways",
+    "metabolomics",
+    "drug targets",
+    "disease",
+    "chemical compounds",
+    "enzymes",
+    "orthology",
+    "life sciences"
+  ],
+  "license": "Academic use only — https://www.kegg.jp/kegg/legal.html",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://rest.kegg.jp",
+    "serviceType": "REST API"
+  },
+  "endpointURL": "https://rest.kegg.jp",
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "INFO — Get database release information",
+      "description": "Display release information and statistics for a KEGG database.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/info/{database}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "LIST — List entry identifiers",
+      "description": "Obtain a list of entry identifiers and associated names for a KEGG database.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/list/{database}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "FIND — Search entries by keyword",
+      "description": "Search entries in a KEGG database by keyword or molecular property.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/find/{database}/{query}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "GET — Retrieve database entries",
+      "description": "Retrieve specific KEGG database entries in flat-file, sequence, image, KGML, or JSON format.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/get/{dbentries}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "CONV — Convert identifiers",
+      "description": "Convert identifiers between KEGG and external databases such as NCBI, UniProt, PubChem, and ChEBI.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/conv/{target_db}/{source_db}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "LINK — Find cross-references",
+      "description": "Find related entries between KEGG databases using cross-references.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/link/{target_db}/{source_db}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "DDI — Drug-drug interactions",
+      "description": "Find adverse drug-drug interactions for drug entries.",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rest.kegg.jp/ddi/{dbentries}",
+        "httpMethod": "GET"
+      }
+    }
+  ]
+}
