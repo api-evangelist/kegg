@@ -59,15 +59,15 @@ apis:
       - Identifier Conversion
       - Orthology
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://www.kegg.jp/kegg/rest/keggapi.html
-      - type: terms-of-service
+      - type: TermsOfService
         url: https://www.kegg.jp/kegg/legal.html
-      - type: rate-limits
+      - type: RateLimits
         url: https://api-evangelist.github.io/kegg/rate-limits/kegg-rest-api.yml
-      - type: plans
+      - type: Plans
         url: https://api-evangelist.github.io/kegg/plans/kegg-rest-api.yml
-      - type: finops
+      - type: FinOps
         url: https://api-evangelist.github.io/kegg/finops/overview.yml
     contact:
       - FN: KEGG Support
