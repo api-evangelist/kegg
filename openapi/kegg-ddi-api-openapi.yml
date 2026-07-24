@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv ddi API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: ddi
+  description: Find adverse drug-drug interactions
+paths:
+  /ddi/{dbentry}:
+    get:
+      operationId: getDrugInteraction
+      summary: Get adverse drug-drug interactions for a single drug
+      description: 'Find adverse drug-drug interactions for a single drug entry. Returns tab-delimited text listing interacting drug pairs and severity data. Drug entries can be specified using KEGG drug IDs (D prefix), NDC codes, or YJ codes.
+
+        '
+      tags:
+      - ddi
+      parameters:
+      - name: dbentry
+        in: path
+        required: true
+        description: 'A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.
+
+          '
+        schema:
+          type: string
+          example: D00001
+      responses:
+        '200':
+          description: Tab-delimited drug-drug interaction data
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "D00001\tD00002\tCI\nD00001\tD00005\tprecaution\n"
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+  /ddi/{dbentries}:
+    get:
+      operationId: getDrugInteractions
+      summary: Get adverse drug-drug interactions for multiple drugs
+      description: 'Find adverse drug-drug interactions among multiple drug entries. Returns tab-delimited text listing interacting drug pairs and their interaction severity. Drug entries can be specified using KEGG drug IDs, NDC codes, or YJ codes, separated by plus signs.
+
+        '
+      tags:
+      - ddi
+      parameters:
+      - name: dbentries
+        in: path
+        required: true
+        description: 'Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).
+
+          '
+        schema:
+          type: string
+          example: D00001+D00002
+      responses:
+        '200':
+          description: Tab-delimited drug-drug interaction data
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html

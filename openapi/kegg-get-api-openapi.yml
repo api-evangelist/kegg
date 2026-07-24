@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv get API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: get
+  description: Retrieve specific database entries
+paths:
+  /get/{dbentries}:
+    get:
+      operationId: getEntries
+      summary: Retrieve database entries
+      description: 'Retrieve one or more KEGG database entries in their default flat-file format. Up to 10 entries can be retrieved in a single request by separating identifiers with plus signs (e.g., hsa:10458+ece:Z5100).
+
+        '
+      tags:
+      - get
+      parameters:
+      - name: dbentries
+        in: path
+        required: true
+        description: 'One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).
+
+          '
+        schema:
+          type: string
+          example: hsa:10458+ece:Z5100
+      responses:
+        '200':
+          description: KEGG flat-file format entry data
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+  /get/{dbentries}/{option}:
+    get:
+      operationId: getEntriesWithOption
+      summary: Retrieve database entries in a specific format
+      description: 'Retrieve one or more KEGG database entries in a specified output format. Options include amino acid sequences, nucleotide sequences, molecular structure files, pathway images, KGML XML, and JSON.
+
+        '
+      tags:
+      - get
+      parameters:
+      - name: dbentries
+        in: path
+        required: true
+        description: 'One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.
+
+          '
+        schema:
+          type: string
+      - name: option
+        in: path
+        required: true
+        description: Output format option
+        schema:
+          type: string
+          enum:
+          - aaseq
+          - ntseq
+          - mol
+          - kcf
+          - image
+          - image2x
+          - conf
+          - kgml
+          - json
+      responses:
+        '200':
+          description: Entry data in the requested format
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+            image/gif:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html

@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: conv
+  description: Convert identifiers between KEGG and external databases
+paths:
+  /conv/{target_db}/{source_db}:
+    get:
+      operationId: convertIdentifiers
+      summary: Convert identifiers between databases
+      description: 'Convert identifiers between KEGG and external databases. Returns a tab-delimited mapping of source to target identifiers. Supports conversion between KEGG gene identifiers and NCBI Gene IDs, NCBI Protein IDs, and UniProt accessions, as well as between KEGG compound IDs and PubChem CIDs and ChEBI IDs.
+
+        '
+      tags:
+      - conv
+      parameters:
+      - name: target_db
+        in: path
+        required: true
+        description: 'Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.
+
+          '
+        schema:
+          type: string
+          example: ncbi-geneid
+      - name: source_db
+        in: path
+        required: true
+        description: 'Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.
+
+          '
+        schema:
+          type: string
+          example: hsa
+      responses:
+        '200':
+          description: Tab-delimited identifier mapping
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "ncbi-geneid:10458\thsa:10458\nncbi-geneid:1131\thsa:1131\n"
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+  /conv/{target_db}/{dbentries}:
+    get:
+      operationId: convertEntryIdentifiers
+      summary: Convert specific entry identifiers
+      description: 'Convert specific KEGG entry identifiers to their equivalents in an external database, or convert external database identifiers to KEGG identifiers. Up to 10 entries per request.
+
+        '
+      tags:
+      - conv
+      parameters:
+      - name: target_db
+        in: path
+        required: true
+        description: 'Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).
+
+          '
+        schema:
+          type: string
+      - name: dbentries
+        in: path
+        required: true
+        description: 'One or more entry identifiers separated by plus signs. Maximum 10 entries per request.
+
+          '
+        schema:
+          type: string
+          example: ncbi-geneid:10458+ncbi-geneid:1131
+      responses:
+        '200':
+          description: Tab-delimited identifier mapping
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html

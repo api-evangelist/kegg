@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv list API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: list
+  description: Obtain a list of entry identifiers and associated names
+paths:
+  /list/{database}:
+    get:
+      operationId: listDatabase
+      summary: List entry identifiers for a database
+      description: 'Obtain a list of entry identifiers and associated names for a KEGG database. Returns tab-delimited text.
+
+        '
+      tags:
+      - list
+      parameters:
+      - name: database
+        in: path
+        required: true
+        description: 'KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tab-delimited list of entry identifiers and names
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "path:hsa00010\tGlycolysis / Gluconeogenesis - Homo sapiens (human)\npath:hsa00020\tCitrate cycle (TCA cycle) - Homo sapiens (human)\n"
+        '400':
+          description: Bad request — invalid database or syntax error
+        '404':
+          description: Not found
+  /list/pathway/{org}:
+    get:
+      operationId: listPathwaysByOrganism
+      summary: List pathways for a specific organism
+      description: 'Obtain a list of pathway entry identifiers and names for a specific organism identified by its KEGG organism code (e.g., hsa for human, eco for E. coli).
+
+        '
+      tags:
+      - list
+      parameters:
+      - name: org
+        in: path
+        required: true
+        description: KEGG organism code (e.g., hsa, eco, mmu)
+        schema:
+          type: string
+          example: hsa
+      responses:
+        '200':
+          description: Tab-delimited list of pathway identifiers and names for the organism
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html

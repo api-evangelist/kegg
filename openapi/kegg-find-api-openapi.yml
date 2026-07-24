@@ -1,0 +1,110 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv find API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: find
+  description: Search entries by keyword or molecular property
+paths:
+  /find/{database}/{query}:
+    get:
+      operationId: findEntries
+      summary: Search entries by keyword
+      description: 'Search entries in a KEGG database by keyword or query data. Returns tab-delimited text with matching entry identifiers and names. Searchable fields vary by database and may include ENTRY, NAME, SYMBOL, COMPOSITION, and DEFINITION.
+
+        '
+      tags:
+      - find
+      parameters:
+      - name: database
+        in: path
+        required: true
+        description: 'KEGG database to search. Supported: genes, ligand, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ, network, variant, ko, genome, pathway, brite, module.
+
+          '
+        schema:
+          type: string
+      - name: query
+        in: path
+        required: true
+        description: Keyword(s) to search for, URL-encoded
+        schema:
+          type: string
+          example: shikimate+pathway
+      responses:
+        '200':
+          description: Tab-delimited list of matching entries
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "cpd:C00493\tshikimate\ncpd:C02637\t3-Dehydroshikimate\n"
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+  /find/{database}/{query}/{option}:
+    get:
+      operationId: findEntriesWithOption
+      summary: Search compound or drug entries by molecular property
+      description: 'Search compound or drug database entries by molecular formula, exact mass, or molecular weight. The option parameter specifies the search type. Only applicable to compound and drug databases.
+
+        '
+      tags:
+      - find
+      parameters:
+      - name: database
+        in: path
+        required: true
+        description: Database to search — compound or drug
+        schema:
+          type: string
+          enum:
+          - compound
+          - drug
+      - name: query
+        in: path
+        required: true
+        description: 'Molecular formula (e.g., C6H12O6), exact mass range (e.g., 174.05-174.15), or molecular weight range (e.g., 180-180)
+
+          '
+        schema:
+          type: string
+      - name: option
+        in: path
+        required: true
+        description: Search type
+        schema:
+          type: string
+          enum:
+          - formula
+          - exact_mass
+          - mol_weight
+          - nop
+      responses:
+        '200':
+          description: Tab-delimited list of matching entries
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html

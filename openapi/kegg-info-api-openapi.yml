@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST conv info API
+  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+
+    '
+  version: 1.0.0
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+servers:
+- url: https://rest.kegg.jp
+  description: KEGG REST API server
+tags:
+- name: info
+  description: Display database release information and statistics
+paths:
+  /info/{database}:
+    get:
+      operationId: getInfo
+      summary: Get database information
+      description: 'Display release information and statistics for a KEGG database, including the number of entries and linked databases.
+
+        '
+      tags:
+      - info
+      parameters:
+      - name: database
+        in: path
+        required: true
+        description: 'KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).
+
+          '
+        schema:
+          type: string
+          enum:
+          - kegg
+          - pathway
+          - brite
+          - module
+          - ko
+          - genes
+          - genome
+          - ligand
+          - compound
+          - glycan
+          - reaction
+          - rclass
+          - enzyme
+          - network
+          - variant
+          - disease
+          - drug
+          - dgroup
+      responses:
+        '200':
+          description: Database release information and statistics
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "pathway          Release 113.0+/09-25, Sep 24\n                 Kanehisa Laboratories\nKEGG PATHWAY Database\n# of pathways:   572\n# of genes:      8,022 (hsa)\n"
+        '400':
+          description: Bad request — invalid database name or syntax error
+        '404':
+          description: Not found — database does not exist
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html
