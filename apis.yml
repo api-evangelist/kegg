@@ -14,6 +14,18 @@ description: >
   require subscriptions managed through NPO Bioinformatics Japan and Pathway
   Solutions.
 url: https://www.kegg.jp/kegg/rest/
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://www.kegg.jp/favicon.ico
 tags:
   - Bioinformatics
@@ -30,49 +42,113 @@ created: "2026-06-13"
 modified: "2026-06-13"
 specificationVersion: "0.19"
 apis:
-
-  - name: KEGG REST API
-    description: >
-      The KEGG REST API provides unified programmatic access to all KEGG
-      databases through seven operations: INFO (database statistics and release
-      notes), LIST (entry identifiers and names), FIND (keyword and molecular
-      weight/formula search), GET (full entry retrieval in flat-file, KGML,
-      JSON, image, or sequence formats), CONV (identifier conversion between
-      KEGG and external databases such as NCBI, UniProt, PubChem, and ChEBI),
-      LINK (cross-reference lookup between KEGG databases), and DDI (adverse
-      drug-drug interaction queries). Databases covered include PATHWAY, BRITE,
-      MODULE, KO, GENES, GENOME, COMPOUND, GLYCAN, REACTION, ENZYME, DISEASE,
-      DRUG, NETWORK, VARIANT, and DGROUP. The API is restricted to academic
-      users; commercial use requires a license from Pathway Solutions. Rate
-      limit is 3 requests per second per client.
-    image: https://www.kegg.jp/favicon.ico
-    humanURL: https://www.kegg.jp/kegg/rest/
-    baseURL: https://rest.kegg.jp
-    tags:
-      - Pathways
-      - Metabolic Networks
-      - Genomics
-      - Drug Targets
-      - Disease
-      - Chemical Compounds
-      - Enzymes
-      - Identifier Conversion
-      - Orthology
-    properties:
-      - type: Documentation
-        url: https://www.kegg.jp/kegg/rest/keggapi.html
-      - type: TermsOfService
-        url: https://www.kegg.jp/kegg/legal.html
-      - type: RateLimits
-        url: https://api-evangelist.github.io/kegg/rate-limits/kegg-rest-api.yml
-      - type: Plans
-        url: https://api-evangelist.github.io/kegg/plans/kegg-rest-api.yml
-      - type: FinOps
-        url: https://api-evangelist.github.io/kegg/finops/overview.yml
-    contact:
-      - FN: KEGG Support
-        url: https://www.kegg.jp/kegg/feedback.html
-
+- name: KEGG REST API
+  description: >
+    The KEGG REST API provides unified programmatic access to all KEGG databases through seven operations:
+    INFO (database statistics and release notes), LIST (entry identifiers and names), FIND (keyword and
+    molecular weight/formula search), GET (full entry retrieval in flat-file, KGML, JSON, image, or sequence
+    formats), CONV (identifier conversion between KEGG and external databases such as NCBI, UniProt, PubChem,
+    and ChEBI), LINK (cross-reference lookup between KEGG databases), and DDI (adverse drug-drug interaction
+    queries). Databases covered include PATHWAY, BRITE, MODULE, KO, GENES, GENOME, COMPOUND, GLYCAN, REACTION,
+    ENZYME, DISEASE, DRUG, NETWORK, VARIANT, and DGROUP. The API is restricted to academic users; commercial
+    use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
+  image: https://www.kegg.jp/favicon.ico
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - Pathways
+  - Metabolic Networks
+  - Genomics
+  - Drug Targets
+  - Disease
+  - Chemical Compounds
+  - Enzymes
+  - Identifier Conversion
+  - Orthology
+  properties:
+  - type: Documentation
+    url: https://www.kegg.jp/kegg/rest/keggapi.html
+  - type: TermsOfService
+    url: https://www.kegg.jp/kegg/legal.html
+  - type: RateLimits
+    url: https://api-evangelist.github.io/kegg/rate-limits/kegg-rest-api.yml
+  - type: Plans
+    url: https://api-evangelist.github.io/kegg/plans/kegg-rest-api.yml
+  - type: FinOps
+    url: https://api-evangelist.github.io/kegg/finops/overview.yml
+  contact:
+  - FN: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+- aid: kegg:kegg-conv-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) conv API
+  description: Convert identifiers between KEGG and external databases
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - conv
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-conv-api-openapi.yml
+- aid: kegg:kegg-ddi-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) ddi API
+  description: Find adverse drug-drug interactions
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - ddi
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-ddi-api-openapi.yml
+- aid: kegg:kegg-find-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) find API
+  description: Search entries by keyword or molecular property
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - find
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-find-api-openapi.yml
+- aid: kegg:kegg-get-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) get API
+  description: Retrieve specific database entries
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - get
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-get-api-openapi.yml
+- aid: kegg:kegg-info-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) info API
+  description: Display database release information and statistics
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - info
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-info-api-openapi.yml
+- aid: kegg:kegg-link-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) link API
+  description: Find related entries using database cross-references
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - link
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-link-api-openapi.yml
+- aid: kegg:kegg-list-api
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) list API
+  description: Obtain a list of entry identifiers and associated names
+  humanURL: https://www.kegg.jp/kegg/rest/
+  baseURL: https://rest.kegg.jp
+  tags:
+  - list
+  properties:
+  - type: OpenAPI
+    url: openapi/kegg-list-api-openapi.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
