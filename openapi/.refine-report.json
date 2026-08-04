@@ -1,0 +1,26 @@
+{
+  "provider": "kegg",
+  "sources": [
+    "kegg-conv-api-openapi.yml",
+    "kegg-ddi-api-openapi.yml",
+    "kegg-find-api-openapi.yml",
+    "kegg-get-api-openapi.yml",
+    "kegg-info-api-openapi.yml",
+    "kegg-link-api-openapi.yml",
+    "kegg-list-api-openapi.yml"
+  ],
+  "outputs": [
+    "kegg-conv-api-openapi.yml",
+    "kegg-ddi-api-openapi.yml",
+    "kegg-find-api-openapi.yml",
+    "kegg-get-api-openapi.yml",
+    "kegg-info-api-openapi.yml",
+    "kegg-link-api-openapi.yml",
+    "kegg-list-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

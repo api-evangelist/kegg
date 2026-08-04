@@ -1,0 +1,580 @@
+openapi: 3.1.0
+info:
+  title: KEGG REST API
+  description: >
+    The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides
+    programmatic access to KEGG databases covering biological pathways,
+    metabolic networks, molecular interactions, drug targets, disease
+    associations, chemical compounds, genomic sequences, and functional
+    orthologs across thousands of organisms. The API exposes seven core
+    operations — info, list, find, get, conv, link, and ddi — enabling
+    identifier conversion, cross-database linking, keyword and structure
+    searches, and full entry retrieval in text, KGML, and JSON formats.
+    Academic use is free; commercial use requires a license from Pathway
+    Solutions. Rate limit is 3 requests per second per client.
+  version: "1.0.0"
+  contact:
+    name: KEGG Support
+    url: https://www.kegg.jp/kegg/feedback.html
+  termsOfService: https://www.kegg.jp/kegg/legal.html
+  license:
+    name: Academic Use Only
+    url: https://www.kegg.jp/kegg/legal.html
+externalDocs:
+  description: KEGG API Documentation
+  url: https://www.kegg.jp/kegg/rest/keggapi.html
+servers:
+  - url: https://rest.kegg.jp
+    description: KEGG REST API server
+tags:
+  - name: info
+    description: Display database release information and statistics
+  - name: list
+    description: Obtain a list of entry identifiers and associated names
+  - name: find
+    description: Search entries by keyword or molecular property
+  - name: get
+    description: Retrieve specific database entries
+  - name: conv
+    description: Convert identifiers between KEGG and external databases
+  - name: link
+    description: Find related entries using database cross-references
+  - name: ddi
+    description: Find adverse drug-drug interactions
+paths:
+  /info/{database}:
+    get:
+      operationId: getInfo
+      summary: Get database information
+      description: >
+        Display release information and statistics for a KEGG database,
+        including the number of entries and linked databases.
+      tags:
+        - info
+      parameters:
+        - name: database
+          in: path
+          required: true
+          description: >
+            KEGG database name. Valid values include: kegg, pathway, brite,
+            module, ko, genes, genome, ligand, compound, glycan, reaction,
+            rclass, enzyme, network, variant, disease, drug, dgroup, and
+            any organism code (e.g., hsa, eco).
+          schema:
+            type: string
+            enum:
+              - kegg
+              - pathway
+              - brite
+              - module
+              - ko
+              - genes
+              - genome
+              - ligand
+              - compound
+              - glycan
+              - reaction
+              - rclass
+              - enzyme
+              - network
+              - variant
+              - disease
+              - drug
+              - dgroup
+      responses:
+        "200":
+          description: Database release information and statistics
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                pathway          Release 113.0+/09-25, Sep 24
+                                 Kanehisa Laboratories
+                KEGG PATHWAY Database
+                # of pathways:   572
+                # of genes:      8,022 (hsa)
+        "400":
+          description: Bad request — invalid database name or syntax error
+        "404":
+          description: Not found — database does not exist
+  /list/{database}:
+    get:
+      operationId: listDatabase
+      summary: List entry identifiers for a database
+      description: >
+        Obtain a list of entry identifiers and associated names for a KEGG
+        database. Returns tab-delimited text.
+      tags:
+        - list
+      parameters:
+        - name: database
+          in: path
+          required: true
+          description: >
+            KEGG database name or organism code. Supported databases: pathway,
+            brite, module, ko, genome, compound, glycan, reaction, rclass,
+            enzyme, disease, drug, dgroup, network, variant, and organism codes.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Tab-delimited list of entry identifiers and names
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                path:hsa00010	Glycolysis / Gluconeogenesis - Homo sapiens (human)
+                path:hsa00020	Citrate cycle (TCA cycle) - Homo sapiens (human)
+        "400":
+          description: Bad request — invalid database or syntax error
+        "404":
+          description: Not found
+  /list/pathway/{org}:
+    get:
+      operationId: listPathwaysByOrganism
+      summary: List pathways for a specific organism
+      description: >
+        Obtain a list of pathway entry identifiers and names for a specific
+        organism identified by its KEGG organism code (e.g., hsa for human,
+        eco for E. coli).
+      tags:
+        - list
+      parameters:
+        - name: org
+          in: path
+          required: true
+          description: KEGG organism code (e.g., hsa, eco, mmu)
+          schema:
+            type: string
+            example: hsa
+      responses:
+        "200":
+          description: Tab-delimited list of pathway identifiers and names for the organism
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /find/{database}/{query}:
+    get:
+      operationId: findEntries
+      summary: Search entries by keyword
+      description: >
+        Search entries in a KEGG database by keyword or query data. Returns
+        tab-delimited text with matching entry identifiers and names.
+        Searchable fields vary by database and may include ENTRY, NAME,
+        SYMBOL, COMPOSITION, and DEFINITION.
+      tags:
+        - find
+      parameters:
+        - name: database
+          in: path
+          required: true
+          description: >
+            KEGG database to search. Supported: genes, ligand, compound,
+            glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ,
+            network, variant, ko, genome, pathway, brite, module.
+          schema:
+            type: string
+        - name: query
+          in: path
+          required: true
+          description: Keyword(s) to search for, URL-encoded
+          schema:
+            type: string
+            example: shikimate+pathway
+      responses:
+        "200":
+          description: Tab-delimited list of matching entries
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                cpd:C00493	shikimate
+                cpd:C02637	3-Dehydroshikimate
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /find/{database}/{query}/{option}:
+    get:
+      operationId: findEntriesWithOption
+      summary: Search compound or drug entries by molecular property
+      description: >
+        Search compound or drug database entries by molecular formula, exact
+        mass, or molecular weight. The option parameter specifies the search
+        type. Only applicable to compound and drug databases.
+      tags:
+        - find
+      parameters:
+        - name: database
+          in: path
+          required: true
+          description: Database to search — compound or drug
+          schema:
+            type: string
+            enum:
+              - compound
+              - drug
+        - name: query
+          in: path
+          required: true
+          description: >
+            Molecular formula (e.g., C6H12O6), exact mass range (e.g.,
+            174.05-174.15), or molecular weight range (e.g., 180-180)
+          schema:
+            type: string
+        - name: option
+          in: path
+          required: true
+          description: Search type
+          schema:
+            type: string
+            enum:
+              - formula
+              - exact_mass
+              - mol_weight
+              - nop
+      responses:
+        "200":
+          description: Tab-delimited list of matching entries
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /get/{dbentries}:
+    get:
+      operationId: getEntries
+      summary: Retrieve database entries
+      description: >
+        Retrieve one or more KEGG database entries in their default flat-file
+        format. Up to 10 entries can be retrieved in a single request by
+        separating identifiers with plus signs (e.g., hsa:10458+ece:Z5100).
+      tags:
+        - get
+      parameters:
+        - name: dbentries
+          in: path
+          required: true
+          description: >
+            One or more KEGG entry identifiers, separated by plus signs.
+            Maximum 10 entries per request. Format: database:id (e.g.,
+            hsa:10458, cpd:C01290, path:hsa00010).
+          schema:
+            type: string
+            example: hsa:10458+ece:Z5100
+      responses:
+        "200":
+          description: KEGG flat-file format entry data
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /get/{dbentries}/{option}:
+    get:
+      operationId: getEntriesWithOption
+      summary: Retrieve database entries in a specific format
+      description: >
+        Retrieve one or more KEGG database entries in a specified output
+        format. Options include amino acid sequences, nucleotide sequences,
+        molecular structure files, pathway images, KGML XML, and JSON.
+      tags:
+        - get
+      parameters:
+        - name: dbentries
+          in: path
+          required: true
+          description: >
+            One or more KEGG entry identifiers separated by plus signs.
+            Maximum 10 entries per request.
+          schema:
+            type: string
+        - name: option
+          in: path
+          required: true
+          description: Output format option
+          schema:
+            type: string
+            enum:
+              - aaseq
+              - ntseq
+              - mol
+              - kcf
+              - image
+              - image2x
+              - conf
+              - kgml
+              - json
+      responses:
+        "200":
+          description: Entry data in the requested format
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+            image/gif:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /conv/{target_db}/{source_db}:
+    get:
+      operationId: convertIdentifiers
+      summary: Convert identifiers between databases
+      description: >
+        Convert identifiers between KEGG and external databases. Returns a
+        tab-delimited mapping of source to target identifiers. Supports
+        conversion between KEGG gene identifiers and NCBI Gene IDs, NCBI
+        Protein IDs, and UniProt accessions, as well as between KEGG
+        compound IDs and PubChem CIDs and ChEBI IDs.
+      tags:
+        - conv
+      parameters:
+        - name: target_db
+          in: path
+          required: true
+          description: >
+            Target database for conversion. For genes: ncbi-geneid,
+            ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals:
+            pubchem, chebi, or compound.
+          schema:
+            type: string
+            example: ncbi-geneid
+        - name: source_db
+          in: path
+          required: true
+          description: >
+            Source database or organism code. For genes: ncbi-geneid,
+            ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals:
+            pubchem, chebi, or compound.
+          schema:
+            type: string
+            example: hsa
+      responses:
+        "200":
+          description: Tab-delimited identifier mapping
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                ncbi-geneid:10458	hsa:10458
+                ncbi-geneid:1131	hsa:1131
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /conv/{target_db}/{dbentries}:
+    get:
+      operationId: convertEntryIdentifiers
+      summary: Convert specific entry identifiers
+      description: >
+        Convert specific KEGG entry identifiers to their equivalents in an
+        external database, or convert external database identifiers to KEGG
+        identifiers. Up to 10 entries per request.
+      tags:
+        - conv
+      parameters:
+        - name: target_db
+          in: path
+          required: true
+          description: >
+            Target database for conversion (e.g., ncbi-geneid, uniprot,
+            pubchem, chebi, or a KEGG organism code).
+          schema:
+            type: string
+        - name: dbentries
+          in: path
+          required: true
+          description: >
+            One or more entry identifiers separated by plus signs.
+            Maximum 10 entries per request.
+          schema:
+            type: string
+            example: ncbi-geneid:10458+ncbi-geneid:1131
+      responses:
+        "200":
+          description: Tab-delimited identifier mapping
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /link/{target_db}/{source_db}:
+    get:
+      operationId: linkDatabases
+      summary: Find cross-references between databases
+      description: >
+        Find related entries between two KEGG databases using cross-references.
+        Returns tab-delimited text listing relationships between entries in the
+        source and target databases.
+      tags:
+        - link
+      parameters:
+        - name: target_db
+          in: path
+          required: true
+          description: >
+            Target KEGG database. Supported: pathway, brite, module, ko,
+            genes, genome, compound, glycan, reaction, rclass, enzyme,
+            disease, drug, dgroup, network, variant, and organism codes.
+          schema:
+            type: string
+            example: pathway
+        - name: source_db
+          in: path
+          required: true
+          description: >
+            Source KEGG database or organism code.
+          schema:
+            type: string
+            example: hsa
+      responses:
+        "200":
+          description: Tab-delimited cross-reference relationships
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                hsa:10458	path:hsa04010
+                hsa:10458	path:hsa04012
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /link/{target_db}/{dbentries}:
+    get:
+      operationId: linkEntries
+      summary: Find cross-references for specific entries
+      description: >
+        Find related entries in a target KEGG database for specific source
+        entries. Returns tab-delimited cross-reference relationships.
+        Up to 10 entries per request. RDF output formats (turtle, n-triple)
+        are also supported via the option parameter.
+      tags:
+        - link
+      parameters:
+        - name: target_db
+          in: path
+          required: true
+          description: Target KEGG database
+          schema:
+            type: string
+        - name: dbentries
+          in: path
+          required: true
+          description: >
+            One or more source entry identifiers separated by plus signs.
+            Maximum 10 entries per request.
+          schema:
+            type: string
+            example: cpd:C00031+cpd:C00033
+      responses:
+        "200":
+          description: Tab-delimited cross-reference relationships
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /ddi/{dbentry}:
+    get:
+      operationId: getDrugInteraction
+      summary: Get adverse drug-drug interactions for a single drug
+      description: >
+        Find adverse drug-drug interactions for a single drug entry. Returns
+        tab-delimited text listing interacting drug pairs and severity data.
+        Drug entries can be specified using KEGG drug IDs (D prefix), NDC
+        codes, or YJ codes.
+      tags:
+        - ddi
+      parameters:
+        - name: dbentry
+          in: path
+          required: true
+          description: >
+            A single KEGG drug identifier. Formats: KEGG drug ID (e.g.,
+            D00001), NDC code, or YJ code.
+          schema:
+            type: string
+            example: D00001
+      responses:
+        "200":
+          description: Tab-delimited drug-drug interaction data
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |
+                D00001	D00002	CI
+                D00001	D00005	precaution
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+  /ddi/{dbentries}:
+    get:
+      operationId: getDrugInteractions
+      summary: Get adverse drug-drug interactions for multiple drugs
+      description: >
+        Find adverse drug-drug interactions among multiple drug entries.
+        Returns tab-delimited text listing interacting drug pairs and their
+        interaction severity. Drug entries can be specified using KEGG drug
+        IDs, NDC codes, or YJ codes, separated by plus signs.
+      tags:
+        - ddi
+      parameters:
+        - name: dbentries
+          in: path
+          required: true
+          description: >
+            Multiple KEGG drug identifiers separated by plus signs (e.g.,
+            D00001+D00002+D00003).
+          schema:
+            type: string
+            example: D00001+D00002
+      responses:
+        "200":
+          description: Tab-delimited drug-drug interaction data
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
