@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv link API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "link",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find cross-references between databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/link/:target_db/:source_db",
+            "params": [
+              {
+                "name": "target_db",
+                "value": "",
+                "type": "path",
+                "description": "Target KEGG database. Supported: pathway, brite, module, ko, genes, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+              },
+              {
+                "name": "source_db",
+                "value": "",
+                "type": "path",
+                "description": "Source KEGG database or organism code.\n"
+              }
+            ]
+          },
+          "docs": "Find related entries between two KEGG databases using cross-references. Returns tab-delimited text listing relationships between entries in the source and target databases.\n"
+        },
+        {
+          "info": {
+            "name": "Find cross-references for specific entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/link/:target_db/:dbentries",
+            "params": [
+              {
+                "name": "target_db",
+                "value": "",
+                "type": "path",
+                "description": "Target KEGG database"
+              },
+              {
+                "name": "dbentries",
+                "value": "",
+                "type": "path",
+                "description": "One or more source entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+              }
+            ]
+          },
+          "docs": "Find related entries in a target KEGG database for specific source entries. Returns tab-delimited cross-reference relationships. Up to 10 entries per request. RDF output formats (turtle, n-triple) are also supported via the option parameter.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "5a949e60-a83a-4bcc-9cff-5f58b5c4a931",
+      "name": "link",
+      "description": {
+        "content": "Find related entries using database cross-references",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6133d28-16e1-470d-a643-4602d5851b97",
+          "name": "Find cross-references between databases",
+          "request": {
+            "name": "Find cross-references between databases",
+            "description": {
+              "content": "Find related entries between two KEGG databases using cross-references. Returns tab-delimited text listing relationships between entries in the source and target databases.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "link",
+                ":target_db",
+                ":source_db"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_db",
+                  "description": "(Required) Target KEGG database. Supported: pathway, brite, module, ko, genes, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "source_db",
+                  "description": "(Required) Source KEGG database or organism code.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "124f64ce-e068-44b8-b69f-525c2cd5e1b3",
+              "name": "Tab-delimited cross-reference relationships",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database. Supported: pathway, brite, module, ko, genes, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source KEGG database or organism code.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "hsa:10458\tpath:hsa04010\nhsa:10458\tpath:hsa04012\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d0b9c38-9cbc-4115-8f38-8cf756d47b7b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database. Supported: pathway, brite, module, ko, genes, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source KEGG database or organism code.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e327b6a4-27f6-46f1-92d1-1448df6c351a",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database. Supported: pathway, brite, module, ko, genes, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source KEGG database or organism code.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a5d42b3-385f-407f-a598-56cfe86512f5",
+          "name": "Find cross-references for specific entries",
+          "request": {
+            "name": "Find cross-references for specific entries",
+            "description": {
+              "content": "Find related entries in a target KEGG database for specific source entries. Returns tab-delimited cross-reference relationships. Up to 10 entries per request. RDF output formats (turtle, n-triple) are also supported via the option parameter.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "link",
+                ":target_db",
+                ":dbentries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_db",
+                  "description": "(Required) Target KEGG database"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentries",
+                  "description": "(Required) One or more source entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14173541-a115-4123-83ae-450689b28a2e",
+              "name": "Tab-delimited cross-reference relationships",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more source entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab914c58-e94f-44eb-b555-d176c9e3b84c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more source entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d627ec77-b57c-4913-a4cc-9148f94d8936",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target KEGG database"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more source entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "955c26c4-b82f-448d-a994-69317bccfd49",
+    "name": "KEGG REST conv link API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

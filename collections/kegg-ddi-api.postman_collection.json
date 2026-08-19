@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "8adf5db0-7d0e-4899-87e8-e5f8914ca0d9",
+      "name": "ddi",
+      "description": {
+        "content": "Find adverse drug-drug interactions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96268e69-a7aa-4ac8-baa2-e110accb28e7",
+          "name": "Get adverse drug-drug interactions for a single drug",
+          "request": {
+            "name": "Get adverse drug-drug interactions for a single drug",
+            "description": {
+              "content": "Find adverse drug-drug interactions for a single drug entry. Returns tab-delimited text listing interacting drug pairs and severity data. Drug entries can be specified using KEGG drug IDs (D prefix), NDC codes, or YJ codes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ddi",
+                ":dbentry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentry",
+                  "description": "(Required) A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "796a26e5-e9a3-4bd6-90d0-777a86c0b132",
+              "name": "Tab-delimited drug-drug interaction data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentry",
+                      "description": "(Required) A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "D00001\tD00002\tCI\nD00001\tD00005\tprecaution\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ea41f9a-6ed7-42cf-a0ec-6ccc07aa2bfc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentry",
+                      "description": "(Required) A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e27528c6-ee0a-4a58-82e8-f69dc5e24868",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentry",
+                      "description": "(Required) A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b11cf03b-f626-4653-ba36-892267fdb588",
+          "name": "Get adverse drug-drug interactions for multiple drugs",
+          "request": {
+            "name": "Get adverse drug-drug interactions for multiple drugs",
+            "description": {
+              "content": "Find adverse drug-drug interactions among multiple drug entries. Returns tab-delimited text listing interacting drug pairs and their interaction severity. Drug entries can be specified using KEGG drug IDs, NDC codes, or YJ codes, separated by plus signs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ddi",
+                ":dbentries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentries",
+                  "description": "(Required) Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c60879d-d946-42fa-9dbd-ded71863c73a",
+              "name": "Tab-delimited drug-drug interaction data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c41ad85d-25e2-4981-8ce3-3ec46f9cf2aa",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da8ebf86-4591-4392-b27a-a205abccb983",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ddi",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c044f5e2-cbe4-4ff1-a703-5f90b0481be5",
+    "name": "KEGG REST conv ddi API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

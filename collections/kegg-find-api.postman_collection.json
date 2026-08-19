@@ -1,0 +1,456 @@
+{
+  "item": [
+    {
+      "id": "0162798f-5a5a-42bd-8057-f463049ccaee",
+      "name": "find",
+      "description": {
+        "content": "Search entries by keyword or molecular property",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f35d5fab-4133-4a81-98c8-02173980bc54",
+          "name": "Search entries by keyword",
+          "request": {
+            "name": "Search entries by keyword",
+            "description": {
+              "content": "Search entries in a KEGG database by keyword or query data. Returns tab-delimited text with matching entry identifiers and names. Searchable fields vary by database and may include ENTRY, NAME, SYMBOL, COMPOSITION, and DEFINITION.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "find",
+                ":database",
+                ":query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) KEGG database to search. Supported: genes, ligand, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ, network, variant, ko, genome, pathway, brite, module.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query",
+                  "description": "(Required) Keyword(s) to search for, URL-encoded"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34ba63de-dbf6-4153-8c21-a6a2028f4ca9",
+              "name": "Tab-delimited list of matching entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database to search. Supported: genes, ligand, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ, network, variant, ko, genome, pathway, brite, module.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Keyword(s) to search for, URL-encoded"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "cpd:C00493\tshikimate\ncpd:C02637\t3-Dehydroshikimate\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54f640bf-9e09-44ad-a2fe-c63ce35462fa",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database to search. Supported: genes, ligand, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ, network, variant, ko, genome, pathway, brite, module.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Keyword(s) to search for, URL-encoded"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7d939f8-0557-4a9c-a737-8cb426a16289",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database to search. Supported: genes, ligand, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, environ, network, variant, ko, genome, pathway, brite, module.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Keyword(s) to search for, URL-encoded"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05749831-fb52-4958-9c19-1c3ce0488f2c",
+          "name": "Search compound or drug entries by molecular property",
+          "request": {
+            "name": "Search compound or drug entries by molecular property",
+            "description": {
+              "content": "Search compound or drug database entries by molecular formula, exact mass, or molecular weight. The option parameter specifies the search type. Only applicable to compound and drug databases.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "find",
+                ":database",
+                ":query",
+                ":option"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) Database to search — compound or drug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query",
+                  "description": "(Required) Molecular formula (e.g., C6H12O6), exact mass range (e.g., 174.05-174.15), or molecular weight range (e.g., 180-180)\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "option",
+                  "description": "(Required) Search type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af87bbc1-8356-474d-9446-50b5a5125c34",
+              "name": "Tab-delimited list of matching entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) Database to search — compound or drug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Molecular formula (e.g., C6H12O6), exact mass range (e.g., 174.05-174.15), or molecular weight range (e.g., 180-180)\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Search type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b502e8f9-afef-4971-8fe0-8bac12505b73",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) Database to search — compound or drug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Molecular formula (e.g., C6H12O6), exact mass range (e.g., 174.05-174.15), or molecular weight range (e.g., 180-180)\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Search type"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c95a87f-2669-4de4-b1fa-6798fde6b9fb",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    ":database",
+                    ":query",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) Database to search — compound or drug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) Molecular formula (e.g., C6H12O6), exact mass range (e.g., 174.05-174.15), or molecular weight range (e.g., 180-180)\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Search type"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "54292db8-bf23-447d-b524-4322b37a769c",
+    "name": "KEGG REST conv find API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

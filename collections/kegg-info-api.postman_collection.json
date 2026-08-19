@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "66ecb657-7022-4448-aa1c-d2152adba9e0",
+      "name": "info",
+      "description": {
+        "content": "Display database release information and statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec63e3f9-7ea6-4820-b6b2-44d076a65cbf",
+          "name": "Get database information",
+          "request": {
+            "name": "Get database information",
+            "description": {
+              "content": "Display release information and statistics for a KEGG database, including the number of entries and linked databases.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                ":database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3c4173f-b75c-4ffe-8b06-6bfc1f21611f",
+              "name": "Database release information and statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "pathway          Release 113.0+/09-25, Sep 24\n                 Kanehisa Laboratories\nKEGG PATHWAY Database\n# of pathways:   572\n# of genes:      8,022 (hsa)\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "335ffdab-bfcb-409f-bc06-217cc65bb16d",
+              "name": "Bad request — invalid database name or syntax error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfa2aa77-e170-4983-bafa-7b1756888d28",
+              "name": "Not found — database does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c5c828fc-cd4e-4cca-85fa-7a03cba659bc",
+    "name": "KEGG REST conv info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

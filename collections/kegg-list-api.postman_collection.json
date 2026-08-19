@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "4a55833a-2a2f-4ba4-8d47-f265f51d15fe",
+      "name": "list",
+      "description": {
+        "content": "Obtain a list of entry identifiers and associated names",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b990537-c558-4e9b-8830-af8d3477e15b",
+          "name": "List entry identifiers for a database",
+          "request": {
+            "name": "List entry identifiers for a database",
+            "description": {
+              "content": "Obtain a list of entry identifiers and associated names for a KEGG database. Returns tab-delimited text.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                ":database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93c24f6d-fd01-494b-bc3b-d49aff1645bd",
+              "name": "Tab-delimited list of entry identifiers and names",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "path:hsa00010\tGlycolysis / Gluconeogenesis - Homo sapiens (human)\npath:hsa00020\tCitrate cycle (TCA cycle) - Homo sapiens (human)\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b8faef9-cf2d-4731-a2a4-1f374b323b9b",
+              "name": "Bad request — invalid database or syntax error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af319ae4-cc9b-4a5f-9e0c-45a156eba1a4",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f9973df-e38c-4fe1-9150-33bc63e22600",
+          "name": "List pathways for a specific organism",
+          "request": {
+            "name": "List pathways for a specific organism",
+            "description": {
+              "content": "Obtain a list of pathway entry identifiers and names for a specific organism identified by its KEGG organism code (e.g., hsa for human, eco for E. coli).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "pathway",
+                ":org"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org",
+                  "description": "(Required) KEGG organism code (e.g., hsa, eco, mmu)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "001110ab-8f95-4d6e-8fbd-19e7577cbe32",
+              "name": "Tab-delimited list of pathway identifiers and names for the organism",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "pathway",
+                    ":org"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org",
+                      "description": "(Required) KEGG organism code (e.g., hsa, eco, mmu)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a310fce-4514-44ce-b269-80408259e8d2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "pathway",
+                    ":org"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org",
+                      "description": "(Required) KEGG organism code (e.g., hsa, eco, mmu)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e71b7ef-4061-4520-83da-690f00f3c012",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "pathway",
+                    ":org"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org",
+                      "description": "(Required) KEGG organism code (e.g., hsa, eco, mmu)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b60e2627-c637-4ba4-aa73-60795034504c",
+    "name": "KEGG REST conv list API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

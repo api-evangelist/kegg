@@ -1,0 +1,392 @@
+{
+  "item": [
+    {
+      "id": "509fd58e-b9b6-4c63-8657-c52cdeef7330",
+      "name": "get",
+      "description": {
+        "content": "Retrieve specific database entries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eaf061ed-d638-44c0-837e-d42a72871fe7",
+          "name": "Retrieve database entries",
+          "request": {
+            "name": "Retrieve database entries",
+            "description": {
+              "content": "Retrieve one or more KEGG database entries in their default flat-file format. Up to 10 entries can be retrieved in a single request by separating identifiers with plus signs (e.g., hsa:10458+ece:Z5100).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get",
+                ":dbentries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentries",
+                  "description": "(Required) One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba7da817-21f9-41e0-9f55-774e9d6c00b7",
+              "name": "KEGG flat-file format entry data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25e239af-6128-4607-83d9-cd3332faba10",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff143ab7-c85f-4068-bbc6-434d6a9099fd",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7283409f-34c5-440c-b544-cc84be376ad5",
+          "name": "Retrieve database entries in a specific format",
+          "request": {
+            "name": "Retrieve database entries in a specific format",
+            "description": {
+              "content": "Retrieve one or more KEGG database entries in a specified output format. Options include amino acid sequences, nucleotide sequences, molecular structure files, pathway images, KGML XML, and JSON.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get",
+                ":dbentries",
+                ":option"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentries",
+                  "description": "(Required) One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "option",
+                  "description": "(Required) Output format option"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5da1e749-3141-4594-b5f6-c6b3aff0fb98",
+              "name": "Entry data in the requested format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Output format option"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c4f7075-ec65-4ff8-9aea-6cdddb73aac8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Output format option"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e3f0fa6-7e48-41dd-8e71-5639aab17b32",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    ":dbentries",
+                    ":option"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "option",
+                      "description": "(Required) Output format option"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f9bdcd9-ba41-42ad-add7-bcdbe4423128",
+    "name": "KEGG REST conv get API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

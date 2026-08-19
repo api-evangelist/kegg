@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "ce59b7c8-44fb-43db-8a7a-ed69992ba68b",
+      "name": "conv",
+      "description": {
+        "content": "Convert identifiers between KEGG and external databases",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ef47c65-8b5c-4deb-8715-46dfda17ce39",
+          "name": "Convert identifiers between databases",
+          "request": {
+            "name": "Convert identifiers between databases",
+            "description": {
+              "content": "Convert identifiers between KEGG and external databases. Returns a tab-delimited mapping of source to target identifiers. Supports conversion between KEGG gene identifiers and NCBI Gene IDs, NCBI Protein IDs, and UniProt accessions, as well as between KEGG compound IDs and PubChem CIDs and ChEBI IDs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conv",
+                ":target_db",
+                ":source_db"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_db",
+                  "description": "(Required) Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "source_db",
+                  "description": "(Required) Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ceabafb-3be0-4437-9bd4-e86f88ee8649",
+              "name": "Tab-delimited identifier mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "ncbi-geneid:10458\thsa:10458\nncbi-geneid:1131\thsa:1131\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f22940a-ab52-4bc8-a926-0617ec8c214a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17d700da-c4f9-4505-a7ea-2c3c536e6ae4",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":source_db"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_db",
+                      "description": "(Required) Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4088e31-a020-4755-ba97-3fd355393b7f",
+          "name": "Convert specific entry identifiers",
+          "request": {
+            "name": "Convert specific entry identifiers",
+            "description": {
+              "content": "Convert specific KEGG entry identifiers to their equivalents in an external database, or convert external database identifiers to KEGG identifiers. Up to 10 entries per request.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conv",
+                ":target_db",
+                ":dbentries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_db",
+                  "description": "(Required) Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dbentries",
+                  "description": "(Required) One or more entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5db056e5-84b8-4350-aa38-5ec459e0b75d",
+              "name": "Tab-delimited identifier mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b93083c3-96f9-4997-a3ca-b3b31d500bb9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "726e33bc-4798-46cc-9a2b-c1bdf9ad4a3f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conv",
+                    ":target_db",
+                    ":dbentries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_db",
+                      "description": "(Required) Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dbentries",
+                      "description": "(Required) One or more entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.kegg.jp",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c13a34ec-f4d7-46a3-9528-a9c6ff6ea88d",
+    "name": "KEGG REST conv API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.\n\n\nContact Support:\n Name: KEGG Support",
+      "type": "text/plain"
+    }
+  }
+}

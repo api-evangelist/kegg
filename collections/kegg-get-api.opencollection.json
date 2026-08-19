@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv get API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "get",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve database entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/get/:dbentries",
+            "params": [
+              {
+                "name": "dbentries",
+                "value": "",
+                "type": "path",
+                "description": "One or more KEGG entry identifiers, separated by plus signs. Maximum 10 entries per request. Format: database:id (e.g., hsa:10458, cpd:C01290, path:hsa00010).\n"
+              }
+            ]
+          },
+          "docs": "Retrieve one or more KEGG database entries in their default flat-file format. Up to 10 entries can be retrieved in a single request by separating identifiers with plus signs (e.g., hsa:10458+ece:Z5100).\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve database entries in a specific format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/get/:dbentries/:option",
+            "params": [
+              {
+                "name": "dbentries",
+                "value": "",
+                "type": "path",
+                "description": "One or more KEGG entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+              },
+              {
+                "name": "option",
+                "value": "",
+                "type": "path",
+                "description": "Output format option"
+              }
+            ]
+          },
+          "docs": "Retrieve one or more KEGG database entries in a specified output format. Options include amino acid sequences, nucleotide sequences, molecular structure files, pathway images, KGML XML, and JSON.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

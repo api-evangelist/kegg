@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get database information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/info/:database",
+            "params": [
+              {
+                "name": "database",
+                "value": "",
+                "type": "path",
+                "description": "KEGG database name. Valid values include: kegg, pathway, brite, module, ko, genes, genome, ligand, compound, glycan, reaction, rclass, enzyme, network, variant, disease, drug, dgroup, and any organism code (e.g., hsa, eco).\n"
+              }
+            ]
+          },
+          "docs": "Display release information and statistics for a KEGG database, including the number of entries and linked databases.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

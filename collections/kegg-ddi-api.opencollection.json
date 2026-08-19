@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv ddi API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ddi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get adverse drug-drug interactions for a single drug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/ddi/:dbentry",
+            "params": [
+              {
+                "name": "dbentry",
+                "value": "",
+                "type": "path",
+                "description": "A single KEGG drug identifier. Formats: KEGG drug ID (e.g., D00001), NDC code, or YJ code.\n"
+              }
+            ]
+          },
+          "docs": "Find adverse drug-drug interactions for a single drug entry. Returns tab-delimited text listing interacting drug pairs and severity data. Drug entries can be specified using KEGG drug IDs (D prefix), NDC codes, or YJ codes.\n"
+        },
+        {
+          "info": {
+            "name": "Get adverse drug-drug interactions for multiple drugs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/ddi/:dbentries",
+            "params": [
+              {
+                "name": "dbentries",
+                "value": "",
+                "type": "path",
+                "description": "Multiple KEGG drug identifiers separated by plus signs (e.g., D00001+D00002+D00003).\n"
+              }
+            ]
+          },
+          "docs": "Find adverse drug-drug interactions among multiple drug entries. Returns tab-delimited text listing interacting drug pairs and their interaction severity. Drug entries can be specified using KEGG drug IDs, NDC codes, or YJ codes, separated by plus signs.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

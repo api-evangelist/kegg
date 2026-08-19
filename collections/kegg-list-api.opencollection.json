@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv list API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "list",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List entry identifiers for a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/list/:database",
+            "params": [
+              {
+                "name": "database",
+                "value": "",
+                "type": "path",
+                "description": "KEGG database name or organism code. Supported databases: pathway, brite, module, ko, genome, compound, glycan, reaction, rclass, enzyme, disease, drug, dgroup, network, variant, and organism codes.\n"
+              }
+            ]
+          },
+          "docs": "Obtain a list of entry identifiers and associated names for a KEGG database. Returns tab-delimited text.\n"
+        },
+        {
+          "info": {
+            "name": "List pathways for a specific organism",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/list/pathway/:org",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path",
+                "description": "KEGG organism code (e.g., hsa, eco, mmu)"
+              }
+            ]
+          },
+          "docs": "Obtain a list of pathway entry identifiers and names for a specific organism identified by its KEGG organism code (e.g., hsa for human, eco for E. coli).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KEGG REST conv API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "conv",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert identifiers between databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/conv/:target_db/:source_db",
+            "params": [
+              {
+                "name": "target_db",
+                "value": "",
+                "type": "path",
+                "description": "Target database for conversion. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+              },
+              {
+                "name": "source_db",
+                "value": "",
+                "type": "path",
+                "description": "Source database or organism code. For genes: ncbi-geneid, ncbi-proteinid, uniprot, or a KEGG organism code. For chemicals: pubchem, chebi, or compound.\n"
+              }
+            ]
+          },
+          "docs": "Convert identifiers between KEGG and external databases. Returns a tab-delimited mapping of source to target identifiers. Supports conversion between KEGG gene identifiers and NCBI Gene IDs, NCBI Protein IDs, and UniProt accessions, as well as between KEGG compound IDs and PubChem CIDs and ChEBI IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Convert specific entry identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.kegg.jp/conv/:target_db/:dbentries",
+            "params": [
+              {
+                "name": "target_db",
+                "value": "",
+                "type": "path",
+                "description": "Target database for conversion (e.g., ncbi-geneid, uniprot, pubchem, chebi, or a KEGG organism code).\n"
+              },
+              {
+                "name": "dbentries",
+                "value": "",
+                "type": "path",
+                "description": "One or more entry identifiers separated by plus signs. Maximum 10 entries per request.\n"
+              }
+            ]
+          },
+          "docs": "Convert specific KEGG entry identifiers to their equivalents in an external database, or convert external database identifiers to KEGG identifiers. Up to 10 entries per request.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
