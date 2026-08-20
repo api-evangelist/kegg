@@ -95,6 +95,8 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
+  - DDI
+  tags_raw:
   - ddi
   properties:
   - type: OpenAPI
@@ -105,6 +107,8 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
+  - Find
+  tags_raw:
   - find
   properties:
   - type: OpenAPI
@@ -114,7 +118,8 @@ apis:
   description: Retrieve specific database entries
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
-  tags:
+  tags: []
+  tags_raw:
   - get
   properties:
   - type: OpenAPI
@@ -125,6 +130,8 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
+  - Info
+  tags_raw:
   - info
   properties:
   - type: OpenAPI
@@ -135,6 +142,8 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
+  - Link
+  tags_raw:
   - link
   properties:
   - type: OpenAPI
@@ -145,6 +154,8 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
+  - List
+  tags_raw:
   - list
   properties:
   - type: OpenAPI
