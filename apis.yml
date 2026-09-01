@@ -107,7 +107,7 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
-  - ddi
+  - DDI
   tags_raw:
   - ddi
   properties:
@@ -119,7 +119,7 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
-  - find
+  - Find
   tags_raw:
   - find
   properties:
@@ -154,7 +154,7 @@ apis:
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
   tags:
-  - link
+  - Link
   tags_raw:
   - link
   properties:
