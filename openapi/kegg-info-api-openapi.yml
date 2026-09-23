@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: KEGG REST conv info API
-  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
-
-    '
+  title: KEGG REST Info API
+  description: The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms.
   version: 1.0.0
   contact:
     name: KEGG Support
@@ -16,18 +14,16 @@ servers:
 - url: https://rest.kegg.jp
   description: KEGG REST API server
 tags:
-- name: info
+- name: Info
   description: Display database release information and statistics
 paths:
   /info/{database}:
     get:
       operationId: getInfo
       summary: Get database information
-      description: 'Display release information and statistics for a KEGG database, including the number of entries and linked databases.
-
-        '
+      description: Display release information and statistics for a KEGG database, including the number of entries and linked databases.
       tags:
-      - info
+      - Info
       parameters:
       - name: database
         in: path

@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: KEGG REST conv link API
-  description: 'The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free; commercial use requires a license from Pathway Solutions. Rate limit is 3 requests per second per client.
-
-    '
+  title: KEGG REST Link API
+  description: The Kyoto Encyclopedia of Genes and Genomes (KEGG) REST API provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms.
   version: 1.0.0
   contact:
     name: KEGG Support
@@ -16,18 +14,16 @@ servers:
 - url: https://rest.kegg.jp
   description: KEGG REST API server
 tags:
-- name: link
+- name: Link
   description: Find related entries using database cross-references
 paths:
   /link/{target_db}/{source_db}:
     get:
       operationId: linkDatabases
       summary: Find cross-references between databases
-      description: 'Find related entries between two KEGG databases using cross-references. Returns tab-delimited text listing relationships between entries in the source and target databases.
-
-        '
+      description: Find related entries between two KEGG databases using cross-references. Returns tab-delimited text listing relationships between entries in the source and target databases.
       tags:
-      - link
+      - Link
       parameters:
       - name: target_db
         in: path
@@ -63,11 +59,9 @@ paths:
     get:
       operationId: linkEntries
       summary: Find cross-references for specific entries
-      description: 'Find related entries in a target KEGG database for specific source entries. Returns tab-delimited cross-reference relationships. Up to 10 entries per request. RDF output formats (turtle, n-triple) are also supported via the option parameter.
-
-        '
+      description: Find related entries in a target KEGG database for specific source entries. Returns tab-delimited cross-reference relationships. Up to 10 entries per request. RDF output formats (turtle, n-triple) are also supported via the option parameter.
       tags:
-      - link
+      - Link
       parameters:
       - name: target_db
         in: path

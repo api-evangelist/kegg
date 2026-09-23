@@ -1,13 +1,7 @@
 {
   "provider": "kegg",
   "sources": [
-    "kegg-conv-api-openapi.yml",
-    "kegg-ddi-api-openapi.yml",
-    "kegg-find-api-openapi.yml",
-    "kegg-get-api-openapi.yml",
-    "kegg-info-api-openapi.yml",
-    "kegg-link-api-openapi.yml",
-    "kegg-list-api-openapi.yml"
+    "_original/kegg-rest-api.yml"
   ],
   "outputs": [
     "kegg-conv-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kegg-rest-api.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "kegg-conv-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-ddi-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-find-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-get-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-link-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kegg-list-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
