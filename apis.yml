@@ -114,7 +114,7 @@ apis:
   - type: OpenAPI
     url: openapi/kegg-ddi-api-openapi.yml
 - aid: kegg:kegg-find-api
-  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) find API
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) Find API
   description: Search entries by keyword or molecular property
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
@@ -126,7 +126,7 @@ apis:
   - type: OpenAPI
     url: openapi/kegg-find-api-openapi.yml
 - aid: kegg:kegg-get-api
-  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) get API
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) Get API
   description: Retrieve specific database entries
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
@@ -137,7 +137,7 @@ apis:
   - type: OpenAPI
     url: openapi/kegg-get-api-openapi.yml
 - aid: kegg:kegg-info-api
-  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) info API
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) Info API
   description: Display database release information and statistics
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
@@ -149,7 +149,7 @@ apis:
   - type: OpenAPI
     url: openapi/kegg-info-api-openapi.yml
 - aid: kegg:kegg-link-api
-  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) link API
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) Link API
   description: Find related entries using database cross-references
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
@@ -161,7 +161,7 @@ apis:
   - type: OpenAPI
     url: openapi/kegg-link-api-openapi.yml
 - aid: kegg:kegg-list-api
-  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) list API
+  name: Kyoto Encyclopedia of Genes and Genomes (KEGG) List API
   description: Obtain a list of entry identifiers and associated names
   humanURL: https://www.kegg.jp/kegg/rest/
   baseURL: https://rest.kegg.jp
