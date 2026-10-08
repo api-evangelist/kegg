@@ -102,3 +102,34 @@ plans:
       - Optional KEGG mirror site access (including KEGG API) for R&D
       - Service Provider option for deploying KEGG-based products to customers
     registration: https://www.pathway.jp/en/licensing.html
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Academic REST API (Free)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: KEGG FTP Academic Subscription — End User
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: KEGG FTP Academic Subscription — Service Provider
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Commercial License (Pathway Solutions)
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
