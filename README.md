@@ -64,47 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-KEGG is an integrated database resource for understanding high-level functions and utilities of biological systems from molecular-level information derived from genome sequencing and high-throughput experiments.
+The Kyoto Encyclopedia of Genes and Genomes (KEGG) is an integrated database resource for understanding high-level functions and utilities of biological systems from molecular-level information derived from genome sequencing and other high-throughput experiments. The KEGG REST API at rest.kegg.jp provides programmatic access to KEGG databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms. The API exposes seven core operations — info, list, find, get, conv, link, and ddi — enabling identifier conversion, cross-database linking, keyword and structure searches, and full entry retrieval in text, KGML, and JSON formats. Academic use is free via the REST API; FTP and commercial access require subscriptions managed through NPO Bioinformatics Japan and Pathway Solutions.
 
-The KEGG REST API at [rest.kegg.jp](https://rest.kegg.jp) provides programmatic access to databases covering biological pathways, metabolic networks, molecular interactions, drug targets, disease associations, chemical compounds, genomic sequences, and functional orthologs across thousands of organisms.
+**Areas:** Bioinformatics · Genomics · Life Sciences · Pathways · Metabolomics · Drug Targets · Disease · Chemical Compounds · Enzymes · Orthology
 
-## API Operations
+## Kyoto Encyclopedia of Genes and Genomes (KEGG) on APIs.io
 
-| Operation | Description |
-|-----------|-------------|
-| `info`    | Display database release information and statistics |
-| `list`    | Obtain entry identifiers and associated names |
-| `find`    | Search entries by keyword, formula, molecular weight, or sequence |
-| `get`     | Retrieve full database entries (flat-file, KGML, JSON, image, sequence) |
-| `conv`    | Convert identifiers between KEGG and external databases |
-| `link`    | Find related entries through cross-database references |
-| `ddi`     | Query adverse drug-drug interactions |
+Everything profiled for Kyoto Encyclopedia of Genes and Genomes (KEGG) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kegg/](https://apis.io/providers/kegg/)** — or go straight to one of the APIs or properties below.
 
-## Base URL
+### APIs (8)
 
-```
-https://rest.kegg.jp/<operation>/<argument>[/<argument2>...]
-```
+- [KEGG REST API](https://apis.io/apis/kegg/kegg-rest-api/) — The KEGG REST API provides unified programmatic access to all KEGG databases through seven operations: INFO (database statistics and release notes), LIST…
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) conv API](https://apis.io/apis/kegg/kegg-conv-api/) — Convert identifiers between KEGG and external databases
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) ddi API](https://apis.io/apis/kegg/kegg-ddi-api/) — Find adverse drug-drug interactions
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) Find API](https://apis.io/apis/kegg/kegg-find-api/) — Search entries by keyword or molecular property
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) Get API](https://apis.io/apis/kegg/kegg-get-api/) — Retrieve specific database entries
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) Info API](https://apis.io/apis/kegg/kegg-info-api/) — Display database release information and statistics
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) Link API](https://apis.io/apis/kegg/kegg-link-api/) — Find related entries using database cross-references
+- [Kyoto Encyclopedia of Genes and Genomes (KEGG) List API](https://apis.io/apis/kegg/kegg-list-api/) — Obtain a list of entry identifiers and associated names
 
-## Key Databases
+### Published properties
 
-- **KEGG PATHWAY** — Biological pathway maps
-- **KEGG BRITE** — Hierarchical classification systems
-- **KEGG MODULE** — Functional pathway units
-- **KEGG KO** — KEGG Orthology (functional orthologs)
-- **KEGG GENES / GENOME** — Genes and genomic sequences
-- **KEGG COMPOUND / GLYCAN / REACTION / ENZYME** — Chemical and biochemical data
-- **KEGG DISEASE / DRUG / NETWORK** — Health and pharmacological data
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Access & Licensing
+#### Agentic access (1)
 
-- **Academic REST API** — Free, no API key required, 3 requests/second limit
-- **FTP Academic Subscription** — ~$2,000–$5,000/year via NPO Bioinformatics Japan / Pathway Solutions
-- **Commercial License** — Available through [Pathway Solutions](https://www.pathway.jp/en/licensing.html)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Resources
+- [Kegg Agentic Access](https://apis.io/agentic-access/kegg/kegg-agentic-access/)
 
-- [KEGG REST API Documentation](https://www.kegg.jp/kegg/rest/keggapi.html)
-- [KEGG Legal / Terms of Use](https://www.kegg.jp/kegg/legal.html)
-- [Pathway Solutions Commercial Licensing](https://www.pathway.jp/en/licensing.html)
-- [Academic FTP Subscription](https://www.pathway.jp/en/academic.html)
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [KEGG REST conv API](https://apis.io/collections/kegg/open-kegg-conv-api/)
+- [KEGG REST conv ddi API](https://apis.io/collections/kegg/open-kegg-ddi-api/)
+- [KEGG REST conv find API](https://apis.io/collections/kegg/open-kegg-find-api/)
+- [KEGG REST conv get API](https://apis.io/collections/kegg/open-kegg-get-api/)
+- [KEGG REST conv info API](https://apis.io/collections/kegg/open-kegg-info-api/)
+- [KEGG REST conv link API](https://apis.io/collections/kegg/open-kegg-link-api/)
+- [KEGG REST conv list API](https://apis.io/collections/kegg/open-kegg-list-api/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kegg Domain Security](https://apis.io/security/kegg/kegg-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Kegg Rest Api](https://apis.io/plans/kegg/kegg-rest-api/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Kegg Rest Api](https://apis.io/rate-limits/kegg/kegg-rest-api/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Overview](https://apis.io/finops/kegg/overview/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://kegg.jp)
+
+## API Evangelist rating
+
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 48.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 18.4 |
+
+**Agent readiness 25.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 7.8** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kegg/](https://apis.io/providers/kegg/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kyoto Encyclopedia of Genes and Genomes (KEGG): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kegg/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
